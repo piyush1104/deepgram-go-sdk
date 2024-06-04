@@ -6,8 +6,9 @@ import (
 	"net/http"
 	"testing"
 
-	"github.com/deepgram-devs/deepgram-go-sdk/deepgram"
 	"github.com/jarcoal/httpmock"
+
+	"github.com/piyush1104/deepgram-go-sdk/deepgram"
 )
 
 func TestPrerecordedFromURL(t *testing.T) {

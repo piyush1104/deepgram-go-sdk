@@ -9,6 +9,10 @@ import (
 	"github.com/gorilla/websocket"
 )
 
+const (
+	ReadBufferSize = 8192
+)
+
 type LiveTranscriptionOptions struct {
 	Alternatives     int      `json:"alternatives" url:"alternatives,omitempty" `
 	Callback         string   `json:"callback" url:"callback,omitempty" `
@@ -45,8 +49,8 @@ type LiveTranscriptionOptions struct {
 }
 
 func (dg *Client) LiveTranscription(options LiveTranscriptionOptions) (*websocket.Conn, *http.Response, error) {
-	query, _ := query.Values(options)
-	u := url.URL{Scheme: "wss", Host: dg.Host, Path: "/v1/listen", RawQuery: query.Encode()}
+	q, _ := query.Values(options)
+	u := url.URL{Scheme: "wss", Host: dg.Host, Path: "/v1/listen", RawQuery: q.Encode()}
 	log.Printf("connecting to %s", u.String())
 
 	header := http.Header{
@@ -55,7 +59,10 @@ func (dg *Client) LiveTranscription(options LiveTranscriptionOptions) (*websocke
 		"User-Agent":    []string{dgAgent},
 	}
 
-	c, resp, err := websocket.DefaultDialer.Dial(u.String(), header)
+	dialer := websocket.DefaultDialer
+	dialer.ReadBufferSize = ReadBufferSize
+
+	c, resp, err := dialer.Dial(u.String(), header)
 
 	if err != nil {
 		if resp != nil {

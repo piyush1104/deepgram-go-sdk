@@ -9,8 +9,8 @@ import (
 	"time"
 
 	"github.com/Jeffail/gabs/v2"
-	"github.com/deepgram-devs/deepgram-go-sdk/deepgram"
 	"github.com/gorilla/websocket"
+	"github.com/piyush1104/deepgram-go-sdk/deepgram"
 )
 
 const (

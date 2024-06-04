@@ -7,7 +7,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/deepgram-devs/deepgram-go-sdk/deepgram"
+	"github.com/piyush1104/deepgram-go-sdk/deepgram"
 )
 
 func main() {

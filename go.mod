@@ -1,4 +1,4 @@
-module github.com/deepgram-devs/deepgram-go-sdk
+module github.com/piyush1104/deepgram-go-sdk
 
 go 1.18
 
@@ -10,8 +10,5 @@ require (
 
 require (
 	github.com/google/go-cmp v0.5.9 // indirect
-	github.com/jarcoal/httpmock v1.3.0 // indirect
-	golang.org/x/xerrors v0.0.0-20220907171357-04be3eba64a2 // indirect
+	github.com/jarcoal/httpmock v1.3.0
 )
-
-require github.com/google/go-cmp v0.5.9 // indirect
